@@ -12,5 +12,12 @@ namespace CaixaEletronico
         public string cpf;
         public string rg;
         public string endereco;
+
+        public Cliente() { }
+
+        public Cliente(string nome)
+        {
+            this.nome = nome;
+        }
     }
 }
