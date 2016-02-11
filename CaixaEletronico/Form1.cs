@@ -12,30 +12,51 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
+        Conta conta;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MostrarConta()
         {
-            var cliente = new Cliente
-            {
-                nome = "Gilmar",
-                cpf = "294.908.678-02",
-                rg = "32.085.147-3",
-                endereco = "Rua Esmeralda, 705, Jardim Real, Maringá - PR"
-            };
+            textoTitular.Text = conta.Titular.nome;
+            textoSaldo.Text = conta.Saldo.ToString();
+            textoNumero.Text = conta.Numero.ToString();
+        }
 
-            var conta = new Conta
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            conta = new Conta
             {
                 Numero = 1,
-                Titular = cliente
+                Titular = new Cliente("Victor")
             };
 
-            conta.Deposita(3000);
+            conta.Deposita(250);
 
-            MessageBox.Show(string.Format("O Titular {0} possui R$ {1}", conta.Titular.nome, conta.Saldo));
+            MostrarConta();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textoValor.Text != string.Empty)
+            {
+                var valor = Convert.ToDouble(textoValor.Text);
+                conta.Deposita(valor);
+                MostrarConta();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textoValor.Text != string.Empty)
+            {
+                var valor = Convert.ToDouble(textoValor.Text);
+                conta.Saca(valor);
+                MostrarConta();
+            }
         }
     }
 }
