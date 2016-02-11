@@ -1,9 +1,0 @@
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\bin\Debug\CaixaEletronico.exe.config
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\bin\Debug\CaixaEletronico.exe
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\bin\Debug\CaixaEletronico.pdb
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\obj\Debug\CaixaEletronico.csprojResolveAssemblyReference.cache
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\obj\Debug\CaixaEletronico.Form1.resources
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\obj\Debug\CaixaEletronico.Properties.Resources.resources
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\obj\Debug\CaixaEletronico.csproj.GenerateResource.Cache
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\obj\Debug\CaixaEletronico.exe
-C:\Users\tiogi\Documents\Projetos\CaixaEletronico\CaixaEletronico\obj\Debug\CaixaEletronico.pdb
