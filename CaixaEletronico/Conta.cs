@@ -9,10 +9,10 @@ namespace CaixaEletronico
     public class Conta
     {
         public int Numero { get; set; }
-        public double Saldo { get; private set; }
+        public double Saldo { get; protected set; }
         public Cliente Titular { get; set; }
 
-        public void Saca(double valor)
+        public virtual void Saca(double valor)
         {
             this.Saldo -= valor;
         }

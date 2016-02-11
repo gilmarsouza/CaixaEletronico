@@ -28,7 +28,7 @@ namespace CaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            conta = new Conta
+            conta = new ContaPoupanca
             {
                 Numero = 1,
                 Titular = new Cliente("Victor")
