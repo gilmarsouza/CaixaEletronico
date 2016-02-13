@@ -58,5 +58,21 @@ namespace CaixaEletronico
                 MostrarConta();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var totalizador = new TotalizadorDeContas();
+
+            var conta1 = new Conta();
+            conta1.Deposita(100);
+
+            var conta2 = new ContaCorrente();
+            conta2.Deposita(200);
+
+            totalizador.Adiciona(conta1);
+            totalizador.Adiciona(conta2);
+
+            MessageBox.Show(string.Format("O Saldo Total é R$ {0}", totalizador.SaldoTotal));
+        }
     }
 }
