@@ -12,67 +12,79 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
-        Conta conta;
+        private Conta [] contas;
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void MostrarConta()
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            contas = new Conta[2];
+
+            contas[0] = new Conta {
+                Numero = 1,
+                Titular = new Cliente("Gilmar")
+            };
+            contas[0].Deposita(1500);
+
+            contas[1] = new Conta {
+                Numero = 2,
+                Titular = new Cliente("Maria")
+            };
+            contas[1].Deposita(2400);
+
+            foreach (var conta in contas)
+            {
+                comboContas.Items.Add(conta.Titular.nome);
+                comboContasDestino.Items.Add(conta.Titular.nome);
+            }
+        }
+
+        private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var contaSelecionada = contas[comboContas.SelectedIndex];
+            MostrarConta(contaSelecionada);
+        }
+
+        private void MostrarConta(Conta conta)
         {
             textoTitular.Text = conta.Titular.nome;
             textoSaldo.Text = conta.Saldo.ToString();
             textoNumero.Text = conta.Numero.ToString();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void botaoSaque_Click(object sender, EventArgs e)
         {
-            conta = new ContaPoupanca
+            if (textoValor.Text != string.Empty)
             {
-                Numero = 1,
-                Titular = new Cliente("Victor")
-            };
-
-            conta.Deposita(250);
-
-            MostrarConta();
+                var contaSelecionada = contas[comboContas.SelectedIndex];
+                contaSelecionada.Saca(Convert.ToDouble(textoValor.Text));
+                MostrarConta(contaSelecionada);
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void botaoDeposita_Click(object sender, EventArgs e)
         {
             if (textoValor.Text != string.Empty)
             {
                 var valor = Convert.ToDouble(textoValor.Text);
-                conta.Deposita(valor);
-                MostrarConta();
+                var contaSelecionada = contas[comboContas.SelectedIndex];
+                contaSelecionada.Deposita(valor);
+                MostrarConta(contaSelecionada);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void botaoTransferir_Click(object sender, EventArgs e)
         {
-            if (textoValor.Text != string.Empty)
+            if (textoValor.Text != string.Empty && comboContasDestino.SelectedIndex > -1)
             {
                 var valor = Convert.ToDouble(textoValor.Text);
-                conta.Saca(valor);
-                MostrarConta();
+                var contaOrigem = contas[comboContas.SelectedIndex];
+                var contaDestino = contas[comboContasDestino.SelectedIndex];
+                contaOrigem.TranferirPara(contaDestino, valor);
             }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            var totalizador = new TotalizadorDeContas();
-
-            var conta1 = new Conta();
-            conta1.Deposita(100);
-
-            var conta2 = new ContaCorrente();
-            conta2.Deposita(200);
-
-            totalizador.Adiciona(conta1);
-            totalizador.Adiciona(conta2);
-
-            MessageBox.Show(string.Format("O Saldo Total é R$ {0}", totalizador.SaldoTotal));
         }
     }
 }
