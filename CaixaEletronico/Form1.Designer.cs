@@ -42,6 +42,7 @@
             this.botaoTransferir = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboContasDestino = new System.Windows.Forms.ComboBox();
+            this.botaoTributavel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboContas
@@ -164,11 +165,22 @@
             this.comboContasDestino.Size = new System.Drawing.Size(121, 21);
             this.comboContasDestino.TabIndex = 12;
             // 
+            // botaoTributavel
+            // 
+            this.botaoTributavel.Location = new System.Drawing.Point(38, 291);
+            this.botaoTributavel.Name = "botaoTributavel";
+            this.botaoTributavel.Size = new System.Drawing.Size(105, 23);
+            this.botaoTributavel.TabIndex = 14;
+            this.botaoTributavel.Text = "Teste Tributável";
+            this.botaoTributavel.UseVisualStyleBackColor = true;
+            this.botaoTributavel.Click += new System.EventHandler(this.botaoTributavel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 335);
+            this.Controls.Add(this.botaoTributavel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboContasDestino);
             this.Controls.Add(this.botaoTransferir);
@@ -207,6 +219,7 @@
         private System.Windows.Forms.Button botaoTransferir;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboContasDestino;
+        private System.Windows.Forms.Button botaoTributavel;
     }
 }
 

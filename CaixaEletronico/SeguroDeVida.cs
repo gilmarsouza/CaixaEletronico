@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    public class ContaPoupanca: Conta, ITributavel
+    class SeguroDeVida : ITributavel
     {
         public double CalculaTributos()
         {
-            return Saldo * 0.02;
-        }
-
-        public override void Saca(double valor)
-        {
-            base.Saca(valor + 0.1);
+            return 42;
         }
     }
 }

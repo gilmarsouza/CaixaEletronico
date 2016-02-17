@@ -86,5 +86,16 @@ namespace CaixaEletronico
                 contaOrigem.TranferirPara(contaDestino, valor);
             }
         }
+
+        private void botaoTributavel_Click(object sender, EventArgs e)
+        {
+            GerenciadorDeImposto gerenciador = new GerenciadorDeImposto();
+            ContaPoupanca cp = new ContaPoupanca();
+            cp.Deposita(200);
+            SeguroDeVida sv = new SeguroDeVida();
+            gerenciador.Adiciona(cp);
+            gerenciador.Adiciona(sv);
+            MessageBox.Show("Total: " + gerenciador.Total);
+        }
     }
 }
