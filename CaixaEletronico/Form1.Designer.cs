@@ -38,11 +38,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.botaoSaque = new System.Windows.Forms.Button();
             this.botaoDeposita = new System.Windows.Forms.Button();
-            this.textoValor = new System.Windows.Forms.TextBox();
+            this.textoTipoConta = new System.Windows.Forms.TextBox();
             this.botaoTransferir = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboContasDestino = new System.Windows.Forms.ComboBox();
             this.botaoTributavel = new System.Windows.Forms.Button();
+            this.botaoNovaConta = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.botaoRemover = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboContas
@@ -73,7 +76,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 156);
+            this.label2.Location = new System.Drawing.Point(35, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 3;
@@ -105,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 182);
+            this.label4.Location = new System.Drawing.Point(37, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 7;
@@ -113,7 +116,7 @@
             // 
             // botaoSaque
             // 
-            this.botaoSaque.Location = new System.Drawing.Point(116, 208);
+            this.botaoSaque.Location = new System.Drawing.Point(116, 254);
             this.botaoSaque.Name = "botaoSaque";
             this.botaoSaque.Size = new System.Drawing.Size(75, 23);
             this.botaoSaque.TabIndex = 8;
@@ -123,7 +126,7 @@
             // 
             // botaoDeposita
             // 
-            this.botaoDeposita.Location = new System.Drawing.Point(197, 208);
+            this.botaoDeposita.Location = new System.Drawing.Point(197, 254);
             this.botaoDeposita.Name = "botaoDeposita";
             this.botaoDeposita.Size = new System.Drawing.Size(75, 23);
             this.botaoDeposita.TabIndex = 9;
@@ -131,16 +134,16 @@
             this.botaoDeposita.UseVisualStyleBackColor = true;
             this.botaoDeposita.Click += new System.EventHandler(this.botaoDeposita_Click);
             // 
-            // textoValor
+            // textoTipoConta
             // 
-            this.textoValor.Location = new System.Drawing.Point(183, 237);
-            this.textoValor.Name = "textoValor";
-            this.textoValor.Size = new System.Drawing.Size(100, 20);
-            this.textoValor.TabIndex = 10;
+            this.textoTipoConta.Location = new System.Drawing.Point(91, 208);
+            this.textoTipoConta.Name = "textoTipoConta";
+            this.textoTipoConta.Size = new System.Drawing.Size(100, 20);
+            this.textoTipoConta.TabIndex = 10;
             // 
             // botaoTransferir
             // 
-            this.botaoTransferir.Location = new System.Drawing.Point(278, 208);
+            this.botaoTransferir.Location = new System.Drawing.Point(278, 254);
             this.botaoTransferir.Name = "botaoTransferir";
             this.botaoTransferir.Size = new System.Drawing.Size(75, 23);
             this.botaoTransferir.TabIndex = 11;
@@ -175,16 +178,48 @@
             this.botaoTributavel.UseVisualStyleBackColor = true;
             this.botaoTributavel.Click += new System.EventHandler(this.botaoTributavel_Click);
             // 
+            // botaoNovaConta
+            // 
+            this.botaoNovaConta.Location = new System.Drawing.Point(325, 12);
+            this.botaoNovaConta.Name = "botaoNovaConta";
+            this.botaoNovaConta.Size = new System.Drawing.Size(87, 23);
+            this.botaoNovaConta.TabIndex = 15;
+            this.botaoNovaConta.Text = "Nova Conta";
+            this.botaoNovaConta.UseVisualStyleBackColor = true;
+            this.botaoNovaConta.Click += new System.EventHandler(this.botaoNovaConta_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 211);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Tipo Conta";
+            // 
+            // botaoRemover
+            // 
+            this.botaoRemover.Location = new System.Drawing.Point(235, 290);
+            this.botaoRemover.Name = "botaoRemover";
+            this.botaoRemover.Size = new System.Drawing.Size(75, 23);
+            this.botaoRemover.TabIndex = 17;
+            this.botaoRemover.Text = "Remover";
+            this.botaoRemover.UseVisualStyleBackColor = true;
+            this.botaoRemover.Click += new System.EventHandler(this.botaoRemover_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 335);
+            this.Controls.Add(this.botaoRemover);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.botaoNovaConta);
             this.Controls.Add(this.botaoTributavel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboContasDestino);
             this.Controls.Add(this.botaoTransferir);
-            this.Controls.Add(this.textoValor);
+            this.Controls.Add(this.textoTipoConta);
             this.Controls.Add(this.botaoDeposita);
             this.Controls.Add(this.botaoSaque);
             this.Controls.Add(this.label4);
@@ -215,11 +250,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button botaoSaque;
         private System.Windows.Forms.Button botaoDeposita;
-        private System.Windows.Forms.TextBox textoValor;
+        private System.Windows.Forms.TextBox textoTipoConta;
         private System.Windows.Forms.Button botaoTransferir;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboContasDestino;
         private System.Windows.Forms.Button botaoTributavel;
+        private System.Windows.Forms.Button botaoNovaConta;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button botaoRemover;
     }
 }
 

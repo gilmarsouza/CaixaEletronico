@@ -12,7 +12,7 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
-        private Conta [] contas;
+        private List<Conta> contas;
 
         public Form1()
         {
@@ -21,25 +21,29 @@ namespace CaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            contas = new Conta[2];
+            contas = new List<Conta>();
 
-            contas[0] = new Conta {
+            contas.Add(new Conta {
                 Numero = 1,
                 Titular = new Cliente("Gilmar")
-            };
+            });
+
             contas[0].Deposita(1500);
 
-            contas[1] = new Conta {
+            contas.Add(new Conta {
                 Numero = 2,
                 Titular = new Cliente("Maria")
-            };
+            });
+
             contas[1].Deposita(2400);
 
             foreach (var conta in contas)
             {
-                comboContas.Items.Add(conta.Titular.nome);
-                comboContasDestino.Items.Add(conta.Titular.nome);
+                comboContas.Items.Add(conta);
+                comboContasDestino.Items.Add(conta);
             }
+
+            comboContas.DisplayMember = "Numero";
         }
 
         private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,21 +59,27 @@ namespace CaixaEletronico
             textoNumero.Text = conta.Numero.ToString();
         }
 
+        public void AdicionaConta(Conta novaConta)
+        {
+            contas.Add(novaConta);
+            comboContas.Items.Add(novaConta.Titular.nome);
+        }
+
         private void botaoSaque_Click(object sender, EventArgs e)
         {
-            if (textoValor.Text != string.Empty)
+            if (textoTipoConta.Text != string.Empty)
             {
                 var contaSelecionada = contas[comboContas.SelectedIndex];
-                contaSelecionada.Saca(Convert.ToDouble(textoValor.Text));
+                contaSelecionada.Saca(Convert.ToDouble(textoTipoConta.Text));
                 MostrarConta(contaSelecionada);
             }
         }
 
         private void botaoDeposita_Click(object sender, EventArgs e)
         {
-            if (textoValor.Text != string.Empty)
+            if (textoTipoConta.Text != string.Empty)
             {
-                var valor = Convert.ToDouble(textoValor.Text);
+                var valor = Convert.ToDouble(textoTipoConta.Text);
                 var contaSelecionada = contas[comboContas.SelectedIndex];
                 contaSelecionada.Deposita(valor);
                 MostrarConta(contaSelecionada);
@@ -78,9 +88,9 @@ namespace CaixaEletronico
 
         private void botaoTransferir_Click(object sender, EventArgs e)
         {
-            if (textoValor.Text != string.Empty && comboContasDestino.SelectedIndex > -1)
+            if (textoTipoConta.Text != string.Empty && comboContasDestino.SelectedIndex > -1)
             {
-                var valor = Convert.ToDouble(textoValor.Text);
+                var valor = Convert.ToDouble(textoTipoConta.Text);
                 var contaOrigem = contas[comboContas.SelectedIndex];
                 var contaDestino = contas[comboContasDestino.SelectedIndex];
                 contaOrigem.TranferirPara(contaDestino, valor);
@@ -96,6 +106,22 @@ namespace CaixaEletronico
             gerenciador.Adiciona(cp);
             gerenciador.Adiciona(sv);
             MessageBox.Show("Total: " + gerenciador.Total);
+        }
+
+        private void botaoNovaConta_Click(object sender, EventArgs e)
+        {
+            var cadastro = new CadastroDeConta(this);
+            cadastro.ShowDialog();
+        }
+
+        private void botaoRemover_Click(object sender, EventArgs e)
+        {
+            if (comboContas.SelectedIndex >= 0)
+            {
+                var conta = (Conta)comboContas.SelectedItem;
+                contas.Remove(conta);
+                comboContas.Items.Remove(comboContas.SelectedItem);
+            }
         }
     }
 }
